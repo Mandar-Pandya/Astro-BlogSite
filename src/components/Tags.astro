@@ -13,7 +13,7 @@ console.log(tags, "this is tags");
           : "px-2 py-1 bg-purple-500 text-white rounded-full text-xs hover:opacity-90"
       }
     >
-      <a href="">#{capitalize(tag)}</a>
+      <a href={"/articles/tag/" + tag}>#{capitalize(tag)}</a>
     </span>
   ))
 }
