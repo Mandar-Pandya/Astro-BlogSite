@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { formatDate } from "../../src/utils";
+import Tags from "./Tags.astro";
 const { article } = Astro.props;
 
 interface Props {
@@ -10,7 +11,7 @@ interface Props {
 
 <div class="max-w-md mx-auto mt-10">
   <div class="bg-white rounded-lg overflow-hidden shadow-lg">
-    <a href={"/articles/" + article.data.slug}>
+    <a href={"/articles/" + article.slug}>
       <img
         src={"/images/" + article.data.image}
         alt="Article Image"
@@ -25,19 +26,7 @@ interface Props {
         {formatDate(article.data.pubDate)}
       </p>
       <div class="flex flex-wrap gap-2">
-        {
-          article.data.tags.map((tag: any, index: number) => (
-            <span
-              class={
-                index % 2 === 0
-                  ? "px-2 py-1 bg-green-500 text-white rounded-full text-xs hover:opacity-90"
-                  : "px-2 py-1 bg-blue-500 text-white rounded-full text-xs hover:opacity-90"
-              }
-            >
-              <a href={"/articles/tag/" + tag}>{tag}</a>
-            </span>
-          ))
-        }
+        <Tags tags={article.data.tags} />
       </div>
     </div>
   </div>
